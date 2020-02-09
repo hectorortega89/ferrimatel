@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido" >
+        <div class="ui-g">
+            <div class="ui-g-12" style="text-align: center; margin-top: 10em; margin-right: 10em; margin-bottom: 10em; margin-left: 10em;">
+                <h2>Bienvenidos</h2>
+                <img src="../recursos/images/ferretero.png"></img>
+
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <p:panelGrid columns="2" style="width: 300px; height: 320px">
+                                <f:facet name="header">
+                                    <table>
+                                        <tr>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="matconstruccion.jsf"><img src="../recursos/images/herramientas1.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="productos.jsf"><img src="../recursos/images/herramientas2.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="productos.jsf"><img src="../recursos/images/herramientas3.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                        </tr>
+                                        <tr>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="productos.jsf"><img src="../recursos/images/herramientas1.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="productos.jsf"><img src="../recursos/images/herramientas2.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                            <th><p:graphicImage style="padding-bottom: 10px"><a href="productos.jsf"><img src="../recursos/images/herramientas3.jpg" width="300px" height="300px" class="d-block w-100" alt="..." ></img></a></p:graphicImage></th>
+                                        </tr>
+                                    </table>
+                                </f:facet>
+
+
+                            </p:panelGrid>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </ui:define>    
+</ui:composition>

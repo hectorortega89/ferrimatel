@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>FERRIMATEL</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../recursos/css/main.css" />
+    </h:head>
+    <h:body style="background-color:rgb(254, 205, 3)">
+
+        <p:fieldset>
+            <h1 style="color:Tomato; background-color:rgb(254, 205, 3); text-align:center; border:2px solid Tomato;"> COMERCIAL FERRIMATEL E HIJOS</h1>
+        </p:fieldset>
+
+        <p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:20px">
+            <p:menuitem value="INICIO" url="../pages/inicio.jsf" />
+            <p:submenu label="CATEGORÍAS" icon="pi pi-check">
+                <p:column>
+                    <p:submenu label="CATEGORÍAS">
+                        <p:menuitem value="MATERIAL DE CONSTRUCCIÓN" url="../pages/matconstruccion.jsf" />
+                        <p:menuitem value="PINTURAS" url="../pages/categorias.jsf" />
+                        <p:menuitem value="HOGAR" url="../pages/categorias.jsf" />
+                        <p:menuitem value="SEGURIDAD" url="../pages/categorias.jsf" />
+                        <p:menuitem value="CERRADURAS" url="../pages/categorias.jsf" />
+                        <p:menuitem value="FOCOS LED" url="../pages/categorias.jsf" />
+                        <p:menuitem value="INTERRUPTORES-TOMACORRIENTES" url="../pages/categorias.jsf" />
+                        <p:menuitem value="HERRAMIENTAS" url="../pages/categorias.jsf" />
+
+                    </p:submenu>
+
+                </p:column>
+
+
+            </p:submenu>
+
+            <p:submenu label="LOCALES" icon="pi pi-file">
+
+                <p:column>
+                    <p:submenu label="LOCALES">
+                        
+                        <p:menuitem value="LOCAL 1: LA ROLDÓS" url="https://www.google.com/maps/place/Comit%C3%A9+del+Pueblo,+Quito/@-0.1242341,-78.4661675,18z/data=!4m5!3m4!1s0x91d58f8e4f49ffa5:0xf678a173e32f41b!8m2!3d-0.1224086!4d-78.4652483" />
+                        
+                        <p:menuitem value="LOCAL 2: COMITE DEL PUEBLO" 
+                                    url="https://www.google.com/maps/place/Comit%C3%A9+del+Pueblo,+Quito/@-0.1242341,-78.4661675,18z/data=!4m5!3m4!1s0x91d58f8e4f49ffa5:0xf678a173e32f41b!8m2!3d-0.1224086!4d-78.4652483" />
+
+                        
+
+                        <p:menuitem value="LOCAL 3: COCOTOG" url="https://www.google.com/maps/place/Comit%C3%A9+del+Pueblo,+Quito/@-0.1242341,-78.4661675,18z/data=!4m5!3m4!1s0x91d58f8e4f49ffa5:0xf678a173e32f41b!8m2!3d-0.1224086!4d-78.4652483" />
+
+                    </p:submenu>
+
+                </p:column>
+
+            </p:submenu>
+
+            <p:submenu label="MARCAS" icon="pi pi-pencil">
+                <p:column>
+                    <p:submenu label="MARCAS">
+                        <p:menuitem value="ABRO" url="#" />
+                        <p:menuitem value="PINTULAC" url="#" />
+                        <p:menuitem value="STHIL" url="#" />
+                        <p:menuitem value="BLACK-DECKER" url="#" />
+                        <p:menuitem value="PERLES" url="#" />
+                    </p:submenu>
+
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="NOSOTROS" icon="pi pi-briefcase">
+                <p:column>
+                    <p:submenu label="LOGIN">
+                        <p:menuitem value="LOGIN" url="../pages/login.jsf" />
+
+                    </p:submenu>
+                </p:column>
+
+            </p:submenu>
+        </p:megaMenu>
+
+
+        <section id="banner">
+            <div class="content">
+                <ui:insert name="contenido"/>
+
+            </div>
+
+        </section>
+
+
+        <!-- Scripts -->
+        <script src="../recursos/js/jquery.min.js"></script>
+        <script src="../recursos/js/browser.min.js"></script>
+        <script src="../recursos/js/breakpoints.min.js"></script>
+        <script src="../recursos/js/util.js"></script>
+        <script src="../recursos/js/main.js"></script>
+        <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+        </script>
+
+
+
+        <footer>
+
+            <footer id="footer" style="padding-color: blue">
+
+
+                <h3><span class="label">FERRIMATEL PRINCIPAL 1: CIUDADELA JAIME ROLDÓS AV. PRINCIPAL N85 DIAGONAL FARMACIAS CRUZ AZUL </span>
+                    
+                    <br/> SUCURSAL 1: COMITÉ DEL PUEBLO. JOSÉ FERNANDEZ Y CESAR ENDARA
+                    <br/> SUCURSAR 2: COCOTÓG EN LA AVENIDA PRINCIPAL
+                    <br/>
+                    <span class="label">   TODOS LOS DERECHOS RESERVADOS</span></h3>
+
+
+
+
+            </footer>
+
+        </footer>
+
+
+    </h:body>
+</html>

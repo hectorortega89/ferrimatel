@@ -1,0 +1,6 @@
+/build/
+/dist/
+/ferrimatel-war/build/
+/ferrimatel-war/dist/
+/ferrimatel-ejb/dist/
+/ferrimatel-ejb/build/

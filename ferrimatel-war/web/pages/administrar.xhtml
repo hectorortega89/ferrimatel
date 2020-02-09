@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido" >
+        <div class="ui-g">
+            <div class="ui-g-12" >
+                <h1 style="text-align: center">LOGIN</h1>
+
+
+                <p:panelGrid columns="2" style="width: 375px">
+                    <h:form style="width: 350px">
+                        
+                        <p:commandButton value="INGRESO MERCADERÍA" id="ingresar" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+                        <p:commandButton value="VENTAS" id="ingresar" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+                        <p:commandButton value="VISTA INVENTARIO" id="ingresar" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+                        <p:commandButton value="CONSULTAS" id="ingresar" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false" />
+                         />
+                    </h:form> 
+                </p:panelGrid>
+
+            </div>
+        </div>
+
+
+
+    </ui:define>    
+</ui:composition>
