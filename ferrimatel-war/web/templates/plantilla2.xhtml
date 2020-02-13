@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>FERRIMATEL</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="../recursos/css/main.css" />
+    </h:head>
+    <h:body style="background-color:rgb(254, 205, 3)">
+
+        <p:fieldset>
+            <h1 style="color:Tomato; background-color:rgb(254, 205, 3); text-align:center; border:2px solid Tomato;"> COMERCIAL FERRIMATEL E HIJOS</h1>
+        </p:fieldset>
+
+
+        <p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:20px">
+            
+            <p:submenu label="ADMINISTRACIÓN" icon="pi pi-briefcase">
+                <p:column>
+                    <p:submenu label="ADMINISTRACIÓN:">
+                        <p:menuitem value="INGRESO MERCADERÍA" url="../pages/ingreso.jsf" />
+                        <p:menuitem value="VENTAS" url="../pages/ventas.jsf" />
+                        <p:menuitem value="INVENTARIO" url="../pages/inventario.jsf" />
+                        
+                    </p:submenu>
+                </p:column>
+
+            </p:submenu>
+        </p:megaMenu>
+
+
+        <section id="banner">
+            <div class="content">
+                <ui:insert name="contenido"/>
+
+            </div>
+
+        </section>
+
+
+        <!-- Scripts -->
+        <script src="../recursos/js/jquery.min.js"></script>
+        <script src="../recursos/js/browser.min.js"></script>
+        <script src="../recursos/js/breakpoints.min.js"></script>
+        <script src="../recursos/js/util.js"></script>
+        <script src="../recursos/js/main.js"></script>
+        <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+        </script>
+
+
+
+        <footer>
+
+            <footer id="footer" style="padding-color: blue">
+
+
+                <h3><span class="label">FERRIMATEL</span>
+                    <span class="label">   TODOS LOS DERECHOS RESERVADOS</span></h3>
+
+
+
+
+            </footer>
+
+        </footer>
+
+
+    </h:body>
+</html>

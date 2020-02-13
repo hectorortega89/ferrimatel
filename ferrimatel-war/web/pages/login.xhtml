@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido" >
+        <div class="ui-g">
+            <div class="ui-g-12" >
+                <h1 style="text-align: center">LOGIN</h1>
+                <style type="text/css">
+                    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
+                        text-align: center;
+                    }
+
+                    .customPanelGrid .ui-panelgrid-content {
+                        align-items: center;
+                    }
+                </style>
+
+
+                <h:form style="width: 500px; margin-left: 400px; margin-right:400px">    
+
+                    <p:panelGrid styleClass="showcase-text-align-center">
+
+                        <p:inputText id="float-input" value="#{basicView.text}" />
+                        <p:outputLabel for="@previous" value="Username" />
+                        <p:inputText id="float-input" value="#{basicView.text}" />
+                        <p:outputLabel for="@previous" value="Descripcion" />
+
+
+                        <p:growl id="growl" life="2000" />
+
+                        <p:commandButton value="GUARDAR" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                        <p:commandButton value="LIMPIAR" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+                    </p:panelGrid>
+                </h:form>
+
+            </div>
+        </div>
+
+    </ui:define>    
+</ui:composition>
