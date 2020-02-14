@@ -12,58 +12,125 @@
             <div class="ui-g-12" style="text-align: center">
 
                 <h1>VENTAS</h1>
+                <h:form>
+                    <p:panelGrid style="margin-top:20px">
+                        <f:facet name="header">
+                            <p:row>
 
-                <p:panelGrid style="margin-top:20px">
-                    <f:facet name="header">
+                                <p:column >CEDULA</p:column>
+                                <p:column >APELLIDO</p:column>
+                                <p:column >NOMBRE</p:column>
+                                <p:column>DIRECCIÓN</p:column>
+                                <p:column>TELÉFONO</p:column>
+                                <p:column>CORREO</p:column>
+                            </p:row>
+                        </f:facet>
                         <p:row>
-                            <p:column >CANTIDAD</p:column>
-                            <p:column >DETALLE</p:column>
-                            <p:column >MARCA</p:column>
-                            <p:column >PRECIO UNITARIO</p:column>
-                            <p:column>PRECIO TOTAL</p:column>
-                            
+                            <p:column ><p:inputText></p:inputText></p:column>
+                            <p:column ><p:outputLabel for="acSimple" />
+                                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
+
+                            <p:column ><p:inputText></p:inputText> </p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+
                         </p:row>
 
-                    </f:facet>
-
-                    <p:row>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column ><p:inputText></p:inputText></p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
 
 
-                </p:panelGrid>
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                </h:form>
+
+                <h:form>
+                    <p:panelGrid style="margin-top:20px">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column style="width:200px">CODIGO</p:column>
+                                <p:column >CANTIDAD</p:column>
+                                <p:column >DETALLE</p:column>
+                                <p:column >PRECIO UNITARIO</p:column>
+                                <p:column>PRECIO TOTAL</p:column>
+                            </p:row>
+                        </f:facet>
+                        <p:row>
+                            <p:column ><p:inputText></p:inputText></p:column>
+                            <p:column ><p:inputText></p:inputText></p:column>
+                            <p:column ><p:outputLabel for="acSimple" />
+                                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
+
+                            <p:column ><p:inputText></p:inputText> </p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ><h:outputText value="mar7" /></p:column>
+                            <p:column ><h:outputText value="2" /></p:column>
+                            <p:column ><h:outputText value="martillo" /></p:column>
+                            <p:column ><h:outputText value="25.80" /></p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ><h:outputText value="mar5" /></p:column>
+                            <p:column ><h:outputText value="2" /></p:column>
+                            <p:column ><h:outputText value="martillo" /></p:column>
+                            <p:column ><h:outputText value="25.80" /></p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ><h:outputText value="mar2" /></p:column>
+                            <p:column ><h:outputText value="2" /></p:column>
+                            <p:column ><h:outputText value="martillo" /></p:column>
+                            <p:column ><h:outputText value="25.80" /></p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ><h:outputText value="mar1" /></p:column>
+                            <p:column ><h:outputText value="2" /></p:column>
+                            <p:column ><h:outputText value="martillo" /></p:column>
+                            <p:column ><h:outputText value="25.80" /></p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column >TARIFA 0%:</p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column >TARIFA 12%:</p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column >SUBTOTAL:</p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column >IVA:</p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column ></p:column>
+                            <p:column >TOTAL:</p:column>
+                            <p:column><h:outputText value="51.60" /></p:column>
+                        </p:row>
+
+
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                </h:form>
 
             </div>
         </div>

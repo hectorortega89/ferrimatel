@@ -2272,6 +2272,31 @@ button,
     margin-top: 0;
     padding-top: 0; }
   
+
+#figure{
+
+display : inline-block;
+
+position : relative;
+overflow : hidden;
+}
+
+#figcaption{
+color : white;
+transition: all 0.3s;
+background:rgba(0,0,0, 0.5);
+position : absolute;
+left : 25px;
+bottom : -300px;
+width : 86%;
+padding: 7%;
+}
+
+#figure:hover figcaption{
+bottom : 10px;
+
+}
+
   
 #nav {
 		margin: 2.5em 0 0 0;

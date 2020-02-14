@@ -28,16 +28,21 @@ and open the template in the editor.
         <p:megaMenu orientation="#{megaMenuView.orientation}" style="margin-top:20px">
             
             <p:submenu label="ADMINISTRACIÓN" icon="pi pi-briefcase">
+
                 <p:column>
+
                     <p:submenu label="ADMINISTRACIÓN:">
-                        <p:menuitem value="INGRESO MERCADERÍA" url="../pages/ingreso.jsf" />
+
                         <p:menuitem value="VENTAS" url="../pages/ventas.jsf" />
                         <p:menuitem value="INVENTARIO" url="../pages/inventario.jsf" />
-                        
+                        <p:menuitem value="PEDIDOS" url="../pages/pedidos.jsf" />
+
                     </p:submenu>
+
                 </p:column>
 
             </p:submenu>
+            <p:menuitem value="INICIO" url="../pages/inicio.jsf" />
         </p:megaMenu>
 
 
