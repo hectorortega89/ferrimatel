@@ -12,59 +12,96 @@
             <div class="ui-g-12" style="text-align: center">
 
                 <h1>PEDIDOS</h1>
+                <h:form id="frmCategoria">
+                    <p:panelGrid style="margin-top:20px">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column >NUMERO</p:column>
+                                <p:column >CANTIDAD</p:column>
+                                <p:column >DETALLE</p:column>
+                                <p:column >CLIENTE</p:column>
+                                <p:column>PRECIO TOTAL</p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
 
-                <p:panelGrid style="margin-top:20px">
-                    <f:facet name="header">
+                            </p:row>
+
+                        </f:facet>
+
                         <p:row>
-                            <p:column >CANTIDAD</p:column>
-                            <p:column >DETALLE</p:column>
-                            <p:column >MARCA</p:column>
-                            <p:column >PRECIO UNITARIO</p:column>
-                            <p:column>PRECIO TOTAL</p:column>
-                            
+                            <p:column >5</p:column>
+                            <p:column >8 </p:column>
+                            <p:column >TALADRO </p:column>
+                            <p:column >CLIENTE 10 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >8</p:column>
+                            <p:column >1 </p:column>
+                            <p:column >PERNOS</p:column>
+                            <p:column >CLIENTE 8 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >4</p:column>
+                            <p:column >3 </p:column>
+                            <p:column >ALICATE</p:column>
+                            <p:column >CLIENTE 5 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >2</p:column>
+                            <p:column >6 </p:column>
+                            <p:column >ANGULO </p:column>
+                            <p:column >CLIENTE 2</p:column>
+                            <p:column>50,44</p:column>
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >20</p:column>
+                            <p:column >2 </p:column>
+                            <p:column >SOGA</p:column>
+                            <p:column >CLIENTE 1 </p:column>
+                            <p:column>86,44</p:column>
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
                         </p:row>
 
-                    </f:facet>
 
-                    <p:row>
-                        <p:column >5</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >8</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >4</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >2</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >20</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-
-
-                </p:panelGrid>
-
+                    </p:panelGrid>
+                </h:form>
             </div>
         </div>
     </ui:define>    

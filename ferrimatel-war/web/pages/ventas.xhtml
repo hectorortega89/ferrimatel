@@ -28,16 +28,13 @@
                         <p:row>
                             <p:column ><p:inputText></p:inputText></p:column>
                             <p:column ><p:outputLabel for="acSimple" />
-                                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
-
+                            <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
                             <p:column ><p:inputText></p:inputText> </p:column>
                             <p:column><p:inputText></p:inputText></p:column>
                             <p:column><p:inputText></p:inputText></p:column>
                             <p:column><p:inputText></p:inputText></p:column>
 
                         </p:row>
-
-
 
                     </p:panelGrid>
                     <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>

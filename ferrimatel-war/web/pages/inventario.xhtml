@@ -12,59 +12,67 @@
             <div class="ui-g-12" style="text-align: center">
 
                 <h1>INVENTARIO</h1>
+                <h:form>
+                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                    <p:panelGrid style="margin-top:20px">
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column >CÓDIGO</p:column>
+                                <p:column >CANTIDAD</p:column>
+                                <p:column >DETALLE</p:column>
+                                <p:column >PRECIO COSTO</p:column>
+                                <p:column>PRECIO VENTA</p:column>
+                                <p:column>PRECIO MAYOR</p:column>
 
-                <p:panelGrid style="margin-top:20px">
-                    <f:facet name="header">
+                            </p:row>
+
+                        </f:facet>
+
                         <p:row>
-                            <p:column >CANTIDAD</p:column>
-                            <p:column >DETALLE</p:column>
-                            <p:column >MARCA</p:column>
-                            <p:column >PRECIO UNITARIO</p:column>
-                            <p:column>PRECIO TOTAL</p:column>
-                            
+                            <p:column ><p:inputText></p:inputText></p:column>
+                            <p:column ><p:inputText></p:inputText> </p:column>
+                            <p:column ><p:inputText></p:inputText> </p:column>
+                            <p:column ><p:inputText></p:inputText> </p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+                            <p:column><p:inputText></p:inputText></p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >8</p:column>
+                            <p:column >MARTILLO </p:column>
+                            <p:column >STANLEY </p:column>
+                            <p:column >15,40 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column>50,44</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >4</p:column>
+                            <p:column >MARTILLO </p:column>
+                            <p:column >STANLEY </p:column>
+                            <p:column >15,40 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column>50,44</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >2</p:column>
+                            <p:column >MARTILLO </p:column>
+                            <p:column >STANLEY </p:column>
+                            <p:column >15,40 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column>50,44</p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column >20</p:column>
+                            <p:column >MARTILLO </p:column>
+                            <p:column >STANLEY </p:column>
+                            <p:column >15,40 </p:column>
+                            <p:column>50,44</p:column>
+                            <p:column>50,44</p:column>
                         </p:row>
 
-                    </f:facet>
 
-                    <p:row>
-                        <p:column >5</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >8</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >4</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >2</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column >20</p:column>
-                        <p:column >MARTILLO </p:column>
-                        <p:column >STANLEY </p:column>
-                        <p:column >15,40 </p:column>
-                        <p:column>50,44</p:column>
-                    </p:row>
+                    </p:panelGrid>
 
-
-                </p:panelGrid>
-
+                </h:form>
             </div>
         </div>
     </ui:define>    
