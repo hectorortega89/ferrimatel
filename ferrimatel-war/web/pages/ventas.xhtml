@@ -11,24 +11,23 @@
         <div class="ui-g">
             <div class="ui-g-12" style="text-align: center">
 
-                <h1>VENTAS</h1>
-                <h:form>
+                <h2>CLIENTES</h2>
+                <h:form id="frmClientes">
                     <p:panelGrid style="margin-top:20px">
                         <f:facet name="header">
                             <p:row>
 
-                                <p:column >CEDULA</p:column>
-                                <p:column >APELLIDO</p:column>
-                                <p:column >NOMBRE</p:column>
-                                <p:column>DIRECCIÓN</p:column>
-                                <p:column>TELÉFONO</p:column>
-                                <p:column>CORREO</p:column>
+                                <p:column style="width:120px">CEDULA</p:column>
+                                <p:column style="width:200px">APELLIDO</p:column>
+                                <p:column style="width:200px">NOMBRE</p:column>
+                                <p:column style="width:200px">DIRECCIÓN</p:column>
+                                <p:column style="width:150px">TELÉFONO</p:column>
+                                <p:column style="width:150px">CORREO</p:column>
                             </p:row>
                         </f:facet>
                         <p:row>
-                            <p:column ><p:inputText></p:inputText></p:column>
-                            <p:column ><p:outputLabel for="acSimple" />
-                            <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
+                            <p:column ><p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
+                            <p:column ><p:autoComplete id="acSimple2" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
                             <p:column ><p:inputText></p:inputText> </p:column>
                             <p:column><p:inputText></p:inputText></p:column>
                             <p:column><p:inputText></p:inputText></p:column>
@@ -37,33 +36,33 @@
                         </p:row>
 
                     </p:panelGrid>
-                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                    <p:commandButton value="Guardar" icon="ui-icon-disk" process="frmClientes" update="frmClientes" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                    <p:commandButton value="Limpiar" icon="ui-icon-refresh"  process="frmClientes" update="frmClientes" actionListener="#{proveedorControlador.limpiarProveedor}"></p:commandButton>
                 </h:form>
-
-                <h:form>
+                <h2>VENTAS</h2>
+                <h:form id="frmVentas">
                     <p:panelGrid style="margin-top:20px">
                         <f:facet name="header">
                             <p:row>
-                                <p:column style="width:200px">CODIGO</p:column>
-                                <p:column >CANTIDAD</p:column>
-                                <p:column >DETALLE</p:column>
-                                <p:column >PRECIO UNITARIO</p:column>
-                                <p:column>PRECIO TOTAL</p:column>
+                                <p:column style="width:100px">CODIGO</p:column>
+                                <p:column style="width:100px">CANTIDAD</p:column>
+                                <p:column style="width:500px">DETALLE</p:column>
+                                <p:column style="width:200px">PRECIO UNITARIO</p:column>
+                                <p:column style="width:200px">PRECIO TOTAL</p:column>
                             </p:row>
                         </f:facet>
+
                         <p:row>
                             <p:column ><p:inputText></p:inputText></p:column>
                             <p:column ><p:inputText></p:inputText></p:column>
-                            <p:column ><p:outputLabel for="acSimple" />
-                                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
-
+                            <p:column style="width:500px"><p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
                             <p:column ><p:inputText></p:inputText> </p:column>
                             <p:column><p:inputText></p:inputText></p:column>
                         </p:row>
                         <p:row>
                             <p:column ><h:outputText value="mar7" /></p:column>
                             <p:column ><h:outputText value="2" /></p:column>
-                            <p:column ><h:outputText value="martillo" /></p:column>
+                            <p:column ><h:outputText value="martildasdasdasd asdasdasdasd asdasdsadasd asdasdasdas daslo" /></p:column>
                             <p:column ><h:outputText value="25.80" /></p:column>
                             <p:column><h:outputText value="51.60" /></p:column>
                         </p:row>
@@ -126,7 +125,8 @@
 
 
                     </p:panelGrid>
-                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                    <p:commandButton value="Guardar" icon="ui-icon-disk" process="frmVentas" update="frmVentas" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
+                    <p:commandButton value="Limpiar" icon="ui-icon-refresh"  process="frmVentas" update="frmVentas" actionListener="#{proveedorControlador.limpiarProveedor}"></p:commandButton>
                 </h:form>
 
             </div>
