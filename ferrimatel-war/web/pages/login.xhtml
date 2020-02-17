@@ -18,13 +18,15 @@
                     .customPanelGrid .ui-panelgrid-content {
                         align-items: center;}
                     </style>
-                    <h:form style="width: 500px; margin-left: 400px; margin-right:400px">    
+                    
+                    <h:form style="width: 500px; margin-left: 400px; margin-right:400px">  
+                        <p:messages id="mensaje" autoUpdate="true"/>
 
                     <p:panelGrid styleClass="showcase-text-align-center">
 
-                        <p:inputText id="float-input" value="#{basicView.text}" />
+                        <p:inputText id="float-input" value="#{loginControlador.vendedor.nombreVendedor}" />
                         <p:outputLabel for="@previous" value="VENDEDOR" />
-                        <p:password id="nonFeedback" value="#{passwordView.password1}" />
+                        <p:password id="nonFeedback" value="#{loginControlador.vendedor.passVendedor}" />
                         <p:outputLabel for="@previous" value="CONTRASEÑA" />
 
                         <p:commandButton value="ENTRAR" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:50px" styleClass="ui-priority-primary" />

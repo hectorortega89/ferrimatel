@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.ferrimatel.dao;
 
 import java.util.List;
@@ -28,6 +24,10 @@ public abstract class Generico<T> {
 
     public void edit(T entity) {
         getEntityManager().merge(entity);
+    }
+    
+    public T editEntity(T entity) {
+        return getEntityManager().merge(entity);
     }
 
     public void remove(T entity) {
