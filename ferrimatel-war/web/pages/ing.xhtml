@@ -10,77 +10,46 @@
     <ui:define name="contenido" >
         <div class="ui-g">
             <div class="ui-g-12">
+
+
                 <p:messages id="messages" showDetail="true" closable="true">
                     <p:autoUpdate />
                 </p:messages>
-                <h:form id="frmCliente">
-                    <p:panel header="Registro de Clientes" >
-                        <p:panelGrid id="pgCliente" columns="2" layout="grid"> 
+                <h:form id="frmCategoria">
+                    
+                    <p:panel header="VENTAS" >
+                        <p:dataTable var="venta" value="#{categoriaControlador.listaCategoriasActivas}"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowIndexVar="index">>
+                            <p:column headerText="...">
+                                <h:outputText value="#{index+1}" />
+                            </p:column>
+
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{cat.nombr}" />
+                            </p:column>
+
+                            <p:column headerText="Descripción">
+                                <h:outputText value="#{cat.descripcionCategoria}" />
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
+                            </p:column>
 
 
-                            <p:panelGrid id="pgCedula" styleClass="sinEspacios">
-
-                                <p:row>
-
-                                    <p:column style="width:120px">CEDULA</p:column> 
-                                    <p:column style="width:120px">NOMBRE</p:column> 
-                                    <p:column style="width:120px">APELLIDO</p:column> 
-                                    <p:column style="width:120px">DIRECCIÓN</p:column> 
-                                    <p:column style="width:120px">TELÉFONO</p:column>
-                                    <p:column style="width:120px">EMAIL</p:column>
-
-                                </p:row>
-
-                                <p:row >
-                                    <p:column >
-                                        <p:inputMask id="cedulaCl" mask="#{clienteControlador.cliente.cedulaCl}"
-                                                     value="#{clienteControlador.cliente.cedulaCl}"></p:inputMask>
-                                    </p:column> 
-                                    <p:column >
-                                        <p:inputMask id="nombreCl" mask="#{__________________}"
-                                                     value="#{clienteControlador.cliente.nombreCl}"></p:inputMask>
-                                    </p:column> 
-                                    <p:column >
-                                        <p:inputMask id="apellidoCl" mask="#{__________________}"
-                                                     value="#{clienteControlador.cliente.apellidoCl}"></p:inputMask>
-                                    </p:column> 
-                                    <p:column >
-                                        <p:inputMask id="direccionCl" mask="#{__________________}"
-                                                     value="#{clienteControlador.cliente.direccionCl}"></p:inputMask>
-                                    </p:column> 
-                                    <p:column >
-                                        <p:inputMask id="telefonoCl" mask="#{__________________}"
-                                                     value="#{clienteControlador.cliente.telefonoCl}"></p:inputMask>
-                                    </p:column>
-                                    <p:column >
-                                        <p:inputMask id="correoCl" mask="#{__________________}"
-                                                     value="#{clienteControlador.cliente.emailCl}"></p:inputMask>
-                                    </p:column> 
-
-                                </p:row>
-                                <p:row >
-                                    <p:column >
-                                        <p:commandButton icon="ui-icon-search" style="width: 120px" 
-                                                         process="frmCliente:pgCedula" update="frmCliente" 
-                                                         actionListener="#{clienteControlador.buscarCliente()}"></p:commandButton>
-                                    </p:column>
-                                    <p:column>
-                                        <p:commandButton icon="ui-icon-save" style="width: 120px" 
-                                                         process="frmCliente:pgCedula" update="frmCliente" 
-                                                         actionListener="#{clienteControlador.guardarCliente()}"></p:commandButton>
-                                    </p:column>
-                                </p:row>
-                            </p:panelGrid>
-
-                        </p:panelGrid>
+                        </p:dataTable>
                     </p:panel>
-
-
-
-
-
-
                 </h:form>
+
+                
+                
             </div>           
         </div>
 
