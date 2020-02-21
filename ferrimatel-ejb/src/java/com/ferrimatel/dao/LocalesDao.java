@@ -17,14 +17,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class LocalesDao extends Generico<Locales> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
     public LocalesDao() {
         super(Locales.class);
     }

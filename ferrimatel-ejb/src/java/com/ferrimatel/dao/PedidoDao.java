@@ -10,20 +10,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-/**
- *
- * @author Hector
- */
+
 @Stateless
 public class PedidoDao extends Generico<Pedido> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
 
     public PedidoDao() {
         super(Pedido.class);

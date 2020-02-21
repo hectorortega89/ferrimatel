@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="../templates/plantilla2.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="contenido" >
+        <div class="ui-g">
+            <div class="ui-g-12">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+                <h:form id="frmCliente">
+                    <p:panel header="Registro de Clientes" >
+                        <p:panelGrid id="pgCliente" columns="2" layout="grid"> 
+
+
+                            <p:panelGrid id="pgCedula" styleClass="sinEspacios">
+
+                                <p:row>
+
+                                    <p:column style="width:120px">CEDULA</p:column> 
+                                    <p:column style="width:120px">NOMBRE</p:column> 
+                                    <p:column style="width:120px">APELLIDO</p:column> 
+                                    <p:column style="width:120px">DIRECCIÓN</p:column> 
+                                    <p:column style="width:120px">TELÉFONO</p:column>
+                                    <p:column style="width:120px">EMAIL</p:column>
+
+                                </p:row>
+
+                                <p:row >
+                                    <p:column >
+                                        <p:inputMask id="cedulaCl" mask="#{clienteControlador.cliente.cedulaCl}"
+                                                     value="#{clienteControlador.cliente.cedulaCl}"></p:inputMask>
+                                    </p:column> 
+                                    <p:column >
+                                        <p:inputMask id="nombreCl" mask="#{__________________}"
+                                                     value="#{clienteControlador.cliente.nombreCl}"></p:inputMask>
+                                    </p:column> 
+                                    <p:column >
+                                        <p:inputMask id="apellidoCl" mask="#{__________________}"
+                                                     value="#{clienteControlador.cliente.apellidoCl}"></p:inputMask>
+                                    </p:column> 
+                                    <p:column >
+                                        <p:inputMask id="direccionCl" mask="#{__________________}"
+                                                     value="#{clienteControlador.cliente.direccionCl}"></p:inputMask>
+                                    </p:column> 
+                                    <p:column >
+                                        <p:inputMask id="telefonoCl" mask="#{__________________}"
+                                                     value="#{clienteControlador.cliente.telefonoCl}"></p:inputMask>
+                                    </p:column>
+                                    <p:column >
+                                        <p:inputMask id="correoCl" mask="#{__________________}"
+                                                     value="#{clienteControlador.cliente.emailCl}"></p:inputMask>
+                                    </p:column> 
+
+                                </p:row>
+                                <p:row >
+                                    <p:column >
+                                        <p:commandButton icon="ui-icon-search" style="width: 120px" 
+                                                         process="frmCliente:pgCedula" update="frmCliente" 
+                                                         actionListener="#{clienteControlador.buscarCliente()}"></p:commandButton>
+                                    </p:column>
+                                    <p:column>
+                                        <p:commandButton icon="ui-icon-save" style="width: 120px" 
+                                                         process="frmCliente:pgCedula" update="frmCliente" 
+                                                         actionListener="#{clienteControlador.guardarCliente()}"></p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+
+                        </p:panelGrid>
+                    </p:panel>
+
+
+
+
+
+
+                </h:form>
+            </div>           
+        </div>
+
+
+    </ui:define>    
+</ui:composition>

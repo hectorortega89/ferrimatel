@@ -2,10 +2,12 @@ package com.ferrimatel.services;
 
 import com.ferrimatel.dao.ProductoDao;
 import com.ferrimatel.modelo.Producto;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.faces.model.SelectItem;
 
 @LocalBean
 @Stateless
@@ -18,6 +20,25 @@ public class ProductoServicio {
         Producto produ = productoDao.editEntity(producto);
         return produ != null;
     }
+    
+    //RECIBE UN PARAMETRO DE TIPO PRODUCTO
+    //VIENE DEL DAO OBTENERLISTAPRODUCTOSACTIVOSDAO
+    //CREA UNA LISTA SELECTITEM, QUE ES UN ARRAY
+    //SE CREA LA VARIABLE LISTAPRODUCTOS QUE GUARDA OBJETOPRODUCTO.METODO:OBTENERLISTAPRODUCTOSACTIVOSDAO QUE TIENE DE PARAMETRO UN PRODUCTO
+    //
+    public List<SelectItem> obtenerListaProductosActivos(Producto producto){
+                List<SelectItem> listaSelectItems = new ArrayList<>();
+        List<Producto> listaProductos = productoDao.obtenerListaProductosActivosDao(producto);
+        listaProductos.forEach((pro) -> {
+            listaSelectItems.add(new SelectItem(pro.getIdProd(), pro.getDetalleProd()));
+        });
+        if (listaSelectItems != null && !listaSelectItems.isEmpty()) {
+            return listaSelectItems;
+        } else {
+            return null;
+        }
+    }
+    
 
     public void guardarProductoServicio(Producto producto) {
         productoDao.create(producto);

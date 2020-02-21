@@ -8,34 +8,41 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido" >
-        <div class="ui-g">
+        <div class="ui-g-12">
             <div class="ui-g-12" >
                 <h1 style="text-align: center ; margin-right:20px">LOGIN</h1>
                 <style type="text/css">
-                    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {
-                        text-align: center;}
+                    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {text-align: center;}
+                    .customPanelGrid .ui-panelgrid-content {align-items: center;}</style>
 
-                    .customPanelGrid .ui-panelgrid-content {
-                        align-items: center;}
-                    </style>
-                    
-                    <h:form style="width: 500px; margin-left: 400px; margin-right:400px">  
-                        <p:messages id="mensaje" autoUpdate="true"/>
 
-                    <p:panelGrid styleClass="showcase-text-align-center">
-
-                        <p:inputText id="float-input" value="#{loginControlador.vendedor.nombreVendedor}" />
-                        <p:outputLabel for="@previous" value="VENDEDOR" />
-                        <p:password id="nonFeedback" value="#{loginControlador.vendedor.passVendedor}" />
-                        <p:outputLabel for="@previous" value="CONTRASEÑA" />
-
-                        <p:commandButton value="ENTRAR" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:50px" styleClass="ui-priority-primary" />
-                        <p:commandButton value="CANCELAR" id="ajax" update="growl" action="#{buttonView.buttonAction}" style="margin-right:50px" styleClass="ui-priority-primary" />
-                        <p:growl id="growl" life="2000" />
-                    </p:panelGrid>
+                <h:form id="loginForm">
+                    <p:growl id="msg" showDetail="true" life="4000" />
+                    <p:panel id="loginPnl" header="Login"
+                             style="width: 350px; margin: 0 auto;">
+                        <h:panelGrid id="loginPanel" columns="2" cellpadding="5">
+                            <h:outputText value="USUARIO" />
+                            <p:inputText id="username" value="#{loginBean.user}"></p:inputText>
+                            <p:spacer /><p:spacer />	
+                            <h:outputText value="CONTRASEÑA" />
+                            <p:password id="password" value="#{loginBean.user}"
+                                        feedback="false"></p:password>
+                            <p:message for="password"></p:message>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" cellpadding="10" width="100%">
+                            <p:commandButton id="loginButton" action="#{logonControlador.validarLogin()}"
+                                             value="Login" update="loginForm" ajax="true" style="float: right;">
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </p:panel>
+                    <p:blockUI block="loginPnl" trigger="loginButton" >
+                        <p:graphicImage value="resources/images/loader.gif" />
+                    </p:blockUI>
                 </h:form>
+
             </div>
         </div>
+
 
     </ui:define>    
 </ui:composition>

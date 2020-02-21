@@ -1,29 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ferrimatel.dao;
 
 import com.ferrimatel.modelo.Producto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
 public class ProductoDao extends Generico<Producto> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
+    
+    
+    
+    
     public boolean buscarProductoPorDetalleDao(String detalleProducto) {
 
         try {
@@ -51,6 +40,29 @@ public class ProductoDao extends Generico<Producto> {
             sql.append("SELECT p FROM Producto p WHERE p.flagProd = :flagProd");
             Query query;
             query = getEntityManager().createQuery(sql.toString()).setParameter("flagProd", true);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    
+    //RECIBE UN PARAMETRO DE TIPO PRODUCTO
+    //OBTENGO UNA LISTA DE PRODUCTOS ACTIVOS CONSULTANDO EL ID Y LA BANDERA EN ESTADO TRUE
+    //SI EXISTE EL IDPROD Y EL ESTADO ES TRUE, REGRESA UN RESULTADO
+    //RESULTADO SE VA A OBTENERLISTAPRODUCTOSACTIVOS
+    public List<Producto> obtenerListaProductosActivosDao(Producto producto) {
+        try {
+            List<Producto> resultado;
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT p FROM Producto p WHERE p.idProd = ").append(producto.getIdProd()).append(" AND p.flagProd = TRUE");
+            Query query;
+            query = getEntityManager().createNativeQuery(sql.toString(), Producto.class);
             resultado = query.getResultList();
             if (resultado != null && !resultado.isEmpty()) {
                 return resultado;

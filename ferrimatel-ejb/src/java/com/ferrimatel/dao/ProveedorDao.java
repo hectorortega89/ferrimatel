@@ -17,14 +17,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ProveedorDao extends Generico<Proveedor> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
     public ProveedorDao() {
         super(Proveedor.class);
     }

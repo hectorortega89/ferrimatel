@@ -17,14 +17,18 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class VentasDao extends Generico<Ventas> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public VentasDao() {
         super(Ventas.class);
     }

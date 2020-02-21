@@ -10,7 +10,7 @@
     <ui:define name="contenido" >
         <div class="ui-g">
             <div class="ui-g-12" style="text-align: center">
-
+                <h1 style="float: left contour">VENTAS</h1>
                 <h2>CLIENTES</h2>
                 <h:form id="frmClientes">
                     <p:panelGrid style="margin-top:20px">
@@ -26,16 +26,17 @@
                             </p:row>
                         </f:facet>
                         <p:row>
-                            <p:column ><p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
-                            <p:column ><p:autoComplete id="acSimple2" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
-                            <p:column ><p:inputText></p:inputText> </p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
+                            <p:column ><p:inputText id="cedula" value="#{clienteControlador.cliente.cedulaCl}" required="true" label="cedula" /></p:column>
+                            <p:column ><p:inputText id="apellido" value="#{userLoginView.username}" required="true" label="apellido" /></p:column>
+                            <p:column ><p:inputText id="nombre" value="#{userLoginView.username}" required="true" label="nombre" /></p:column>
+                            <p:column><p:inputText id="direccion" value="#{userLoginView.username}" required="true" label="direccion" /></p:column>
+                            <p:column><p:inputText id="telefono" value="#{userLoginView.username}" required="true" label="telefono" /></p:column>
+                            <p:column><p:inputText id="correo" value="#{userLoginView.username}" required="true" label="correo" /></p:column>
 
                         </p:row>
 
                     </p:panelGrid>
+                    <p:commandButton value="Buscar"  process="frmClientes"  actionListener="#{clienteControlador.buscarCliente}"></p:commandButton>
                     <p:commandButton value="Guardar" icon="ui-icon-disk" process="frmClientes" update="frmClientes" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
                     <p:commandButton value="Limpiar" icon="ui-icon-refresh"  process="frmClientes" update="frmClientes" actionListener="#{proveedorControlador.limpiarProveedor}"></p:commandButton>
                 </h:form>
@@ -53,11 +54,11 @@
                         </f:facet>
 
                         <p:row>
-                            <p:column ><p:inputText></p:inputText></p:column>
-                            <p:column ><p:inputText></p:inputText></p:column>
-                            <p:column style="width:500px"><p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" /></p:column>
-                            <p:column ><p:inputText></p:inputText> </p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
+                            <p:column style="width:100px">CODIGO</p:column>
+                                <p:column style="width:100px">CANTIDAD</p:column>
+                                <p:column style="width:500px">DETALLE</p:column>
+                                <p:column style="width:200px">PRECIO UNITARIO</p:column>
+                                <p:column style="width:200px">PRECIO TOTAL</p:column>
                         </p:row>
                         <p:row>
                             <p:column ><h:outputText value="mar7" /></p:column>

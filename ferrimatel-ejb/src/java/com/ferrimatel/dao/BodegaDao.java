@@ -17,13 +17,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class BodegaDao extends Generico<Bodega> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
 
     public BodegaDao() {
         super(Bodega.class);

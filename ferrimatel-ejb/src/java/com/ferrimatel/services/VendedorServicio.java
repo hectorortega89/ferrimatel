@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ferrimatel.services;
 
 import com.ferrimatel.dao.VendedorDao;
@@ -19,12 +14,19 @@ import javax.ejb.Stateless;
 @Stateless
 public class VendedorServicio {
     private VendedorDao vendedorDao;
+    private Vendedor vendedor;
     
     
     public List<Vendedor> obtenerNombresVendedorActivo(){
         return vendedorDao.obtenerNombresVendedorActivoDao();
     }
-
     
+    public boolean validarVendedor(Vendedor vendedor){
+        return vendedorDao.obtenerVendedorExisteDao(vendedor)!=null;
+    }
+    
+    public Vendedor obtenerVendedorExiste(){
+        return vendedorDao.obtenerVendedorExisteDao(vendedor);
+    }
     
 }

@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ferrimatel.dao;
 
 import com.ferrimatel.modelo.Cliente;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -17,16 +15,62 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ClienteDao extends Generico<Cliente> {
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
+    public Cliente obtenerListaClientesPorCedulaDao(String cedula) {
+        try {
+            List<Cliente> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT c FROM Cliente c WHERE c.cedulaCl = :cedulaCl");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("cedulaCl", cedula);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    public List<Cliente> obtenerCategoriasActivasDao() {
+        try {
+            List<Cliente> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT c FROM Cliente c WHERE c.flagCl = :flagCl");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("flagCl", true);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public Cliente buscarClientePorCedulaDao(String cedula) {
+        try {
+            List<Cliente> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT c FROM Cliente c WHERE c.cedulaCl = :cedulaCl");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("cedulaCl", cedula);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public ClienteDao() {
         super(Cliente.class);
     }
-    
+
 }

@@ -34,14 +34,26 @@ public class VendedorDao extends Generico<Vendedor> {
         }
 
     }
+    
+     public Vendedor obtenerVendedorExisteDao(Vendedor vendedor) {
+        try {
+            List<Vendedor> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor =:nombreVendedor AND v.passVendedor =:passVendedor");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("nombreVendedor", vendedor.getNombreVendedor()).setParameter("passVendedor", vendedor.getPassVendedor());
+            resultado = (List<Vendedor>) query.getSingleResult();
+            if (resultado != null && !resultado.isEmpty()) {
+                return (Vendedor) resultado;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
 
-    @PersistenceContext(unitName = "ferrimatel-ejbPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
     }
+    
 
     public VendedorDao() {
         super(Vendedor.class);

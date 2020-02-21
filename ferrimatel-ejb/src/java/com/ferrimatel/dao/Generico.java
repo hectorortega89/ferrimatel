@@ -3,6 +3,7 @@ package com.ferrimatel.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -16,7 +17,17 @@ public abstract class Generico<T> {
         this.entityClass = entityClass;
     }
 
-    protected abstract EntityManager getEntityManager();
+    @PersistenceContext(unitName = "ferrimatel-ejbPU")
+    private EntityManager EntityManager;
+
+    public EntityManager getEntityManager() {
+        return EntityManager;
+    }
+
+    public void setEntityManager(EntityManager EntityManager) {
+        this.EntityManager = EntityManager;
+    }
+    
 
     public void create(T entity) {
         getEntityManager().persist(entity);
