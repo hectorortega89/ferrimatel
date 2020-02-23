@@ -16,15 +16,34 @@ import javax.persistence.Query;
 @Stateless
 public class VendedorDao extends Generico<Vendedor> {
 
-    public List<Vendedor> obtenerNombresVendedorActivoDao() {
+    public Vendedor buscarVendedorExisteDao(String nombreV, String passV) {
         try {
             List<Vendedor> resultado = new ArrayList<>();
             StringBuilder sql = new StringBuilder();
-            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor = ? AND v.passVendedor = ?");
+            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor = :nombreVendedor");
             Query query;
-            query = getEntityManager().createQuery(sql.toString()).setParameter("nombreVendedor", true);
+            query = getEntityManager().createQuery(sql.toString()).setParameter(":nombreVendedor", nombreV);
             resultado = query.getResultList();
-            if (resultado != null && !resultado.isEmpty()) {
+            if (!resultado.isEmpty()) {    
+                    return (Vendedor) resultado;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    public Vendedor obtenerVendedorExisteDao(String nombreV, String passV) {
+        try {
+            Vendedor resultado = new Vendedor();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor =:nombreVendedor AND v.passVendedor =:passVendedor");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("nombreVendedor", nombreV).setParameter("passVendedor", passV);
+            resultado = (Vendedor) query.getResultList();
+            if (resultado != null) {
                 return resultado;
             } else {
                 return null;
@@ -34,26 +53,6 @@ public class VendedorDao extends Generico<Vendedor> {
         }
 
     }
-    
-     public Vendedor obtenerVendedorExisteDao(Vendedor vendedor) {
-        try {
-            List<Vendedor> resultado = new ArrayList<>();
-            StringBuilder sql = new StringBuilder();
-            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor =:nombreVendedor AND v.passVendedor =:passVendedor");
-            Query query;
-            query = getEntityManager().createQuery(sql.toString()).setParameter("nombreVendedor", vendedor.getNombreVendedor()).setParameter("passVendedor", vendedor.getPassVendedor());
-            resultado = (List<Vendedor>) query.getSingleResult();
-            if (resultado != null && !resultado.isEmpty()) {
-                return (Vendedor) resultado;
-            } else {
-                return null;
-            }
-        } catch (Exception e) {
-            return null;
-        }
-
-    }
-    
 
     public VendedorDao() {
         super(Vendedor.class);

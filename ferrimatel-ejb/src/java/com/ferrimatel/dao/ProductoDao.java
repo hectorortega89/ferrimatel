@@ -4,15 +4,51 @@ import com.ferrimatel.modelo.Producto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.faces.model.SelectItem;
 import javax.persistence.Query;
 
 @Stateless
 public class ProductoDao extends Generico<Producto> {
 
     
+    public Producto buscarProductoPorDetalleDao(String detalle) {
+        try {
+            List<Producto> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT p FROM Producto p WHERE p.detalleProd = :detalleProd");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("detalleProd", detalle);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado.get(0);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
     
-    
-    
+    /*
+    public List<Producto> obtenerProductoPorDetalleDao(Producto detalle){
+        try {
+            List<Producto> resultado = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT p FROM Producto p WHERE p.detalleProd = :detalleProd");
+            Query query;
+            query = getEntityManager().createQuery(sql.toString()).setParameter("detalleProd", detalle);
+            resultado = query.getResultList();
+            if (resultado != null && !resultado.isEmpty()) {
+                return resultado;
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+       */     
+    /*
     public boolean buscarProductoPorDetalleDao(String detalleProducto) {
 
         try {
@@ -31,7 +67,7 @@ public class ProductoDao extends Generico<Producto> {
         } catch (Exception e) {
             return false;
         }
-    }
+    }*/
 
     public List<Producto> obtenerProductosActivosDao() {
         try {

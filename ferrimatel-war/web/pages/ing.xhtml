@@ -8,50 +8,23 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido" >
-        <div class="ui-g">
-            <div class="ui-g-12">
+      
 
-
-                <p:messages id="messages" showDetail="true" closable="true">
-                    <p:autoUpdate />
-                </p:messages>
-                <h:form id="frmCategoria">
-                    
-                    <p:panel header="VENTAS" >
-                        <p:dataTable var="venta" value="#{categoriaControlador.listaCategoriasActivas}"
-                                     rows="10"
-                                     paginator="true"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowIndexVar="index">>
-                            <p:column headerText="...">
-                                <h:outputText value="#{index+1}" />
-                            </p:column>
-
-                            <p:column headerText="Nombre">
-                                <h:outputText value="#{cat.nombr}" />
-                            </p:column>
-
-                            <p:column headerText="Descripción">
-                                <h:outputText value="#{cat.descripcionCategoria}" />
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-
-                        </p:dataTable>
-                    </p:panel>
+                <h:form >
+                    <p:growl id="growl" life="3000"/>
+                    <h:panelGrid columns="2" id="login">
+                        <p:outputLabel value="usuario"/>
+                        <p:inputText required="true" value="#{logonControlador.vendedor.nombreVendedor}"/>
+                        <p:outputLabel value="pass"/>
+                        <p:inputText required="true" type="password" value="#{logonControlador.vendedor.passVendedor}"/>
+                        <p:commandButton value="Ingresar" update="login, growl" action="#{logonControlador.autenticar()}"/>
+                    </h:panelGrid>
                 </h:form>
 
-                
-                
-            </div>           
-        </div>
+
+
+
+         
 
 
     </ui:define>    

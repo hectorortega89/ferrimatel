@@ -21,6 +21,15 @@ public class ProductoServicio {
         return produ != null;
     }
     
+    public Producto buscarProductoPorDetalle(String detalle) {
+        return productoDao.buscarProductoPorDetalleDao(detalle);
+    }
+    
+    
+    
+   
+    
+    
     //RECIBE UN PARAMETRO DE TIPO PRODUCTO
     //VIENE DEL DAO OBTENERLISTAPRODUCTOSACTIVOSDAO
     //CREA UNA LISTA SELECTITEM, QUE ES UN ARRAY
@@ -42,10 +51,6 @@ public class ProductoServicio {
 
     public void guardarProductoServicio(Producto producto) {
         productoDao.create(producto);
-    }
-
-    public boolean buscarProductoPorDetalle(String producto) {
-        return productoDao.buscarProductoPorDetalleDao(producto);
     }
 
     public List<Producto> obtenerProductosActivos() {

@@ -16,7 +16,6 @@ public class ClienteServicio {
 
     public Cliente obtenerListaClientesPorCedula(String cedula) {
         return clienteDao.obtenerListaClientesPorCedulaDao(cedula);
-
     }
 
     public List<Cliente> obtenerListaClientesActivos() {

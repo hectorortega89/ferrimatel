@@ -6,8 +6,10 @@ import com.ferrimatel.services.ProductoServicio;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
@@ -29,9 +31,34 @@ public class ProductoControlador {
 
     }
 
-    public void guardarProductos() {
-        // this.producto.setDescripcionProd(producto);
+    
+    //ERROR, SOLO ALGUNOS PRODUCTOS ME RETORNAN, EL RESTO NO EXISTEN
+    
+    public void buscarProductoPorDetalle(){
+        try {
+            if (producto.getDetalleProd() != null) {
+                Producto productoExiste = productoServicio.buscarProductoPorDetalle(producto.getDetalleProd());
+                if (productoExiste != null) {
+                    producto = productoExiste;
+                    //setBotonActualizarVisible(true);
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El producto ha sido seleccionado"));
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El producto no existe, por favor registrelo."));
+                }
+                
+                //setCamposHabilitados(true);
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Por favor verifique los productos."));
+            }
+            init();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
+        
+    
+ 
 
     public ProductoServicio getProductoServicio() {
         return productoServicio;

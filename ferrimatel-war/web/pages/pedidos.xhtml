@@ -12,6 +12,57 @@
             <div class="ui-g-12" style="text-align: center">
 
                 <h1>PEDIDOS</h1>
+
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                </p:messages>
+                <h:form id="frmPedido">
+                    
+
+                    <p:panel header="LISTA DE PEDIDOS" >
+                        <p:dataTable var="pedi" value="#{pedidoControlador.listaPedidosActivos}"
+                                     rows="10"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowIndexVar="index">
+                            <p:column headerText="NUMERO">
+                                <h:outputText value="#{index+1}" />
+                            </p:column>
+
+                            <p:column headerText="Nombre">
+                                <h:outputText value="#{pedi.flagPedido}" />
+                            </p:column>
+
+                            <p:column headerText="Descripción">
+                                <h:outputText value="#{cat.descripcionCategoria}" />
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmPedido"></p:commandButton>
+                            </p:column>
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmPedido"></p:commandButton>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <h:form id="frmCategoria">
                     <p:panelGrid style="margin-top:20px">
                         <f:facet name="header">
@@ -32,7 +83,7 @@
                             <p:column >5</p:column>
                             <p:column >8 </p:column>
                             <p:column >TALADRO </p:column>
-                            <p:column >CLIENTE 10 </p:column>
+                            <p:column >1 </p:column>
                             <p:column>50,44</p:column>
                             <p:column headerText="..." styleClass="centrar" style="width: 60px">
                                 <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
