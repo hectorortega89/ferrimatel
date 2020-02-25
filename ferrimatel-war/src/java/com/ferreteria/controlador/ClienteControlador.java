@@ -28,6 +28,8 @@ public class ClienteControlador {
 
     }
 
+    
+    //busca cliente por cedula
     public void buscarCliente() {
         try {
             if (cliente.getCedulaCl() != null) {
@@ -48,7 +50,11 @@ public class ClienteControlador {
         }
 
     }
-
+    
+    
+    
+    
+//este sirve, guarda cliente por cedula si no existe, si existe actualiza el cliente
     public void guardarCliente() {
         try {
             if (cliente != null) {

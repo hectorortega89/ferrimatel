@@ -20,8 +20,8 @@ public class VendedorServicio {
 
     private Vendedor vendedor;
 
-    public Vendedor buscarVendedorExisteServicio(String nombreV, String passV) {
-        return vendedorDao.buscarVendedorExisteDao(nombreV, passV);
+    public List<Vendedor> obtenerListaVendedorExiste() {
+        return vendedorDao.obtenerListaVendedorExisteDao();
     }
 
 }

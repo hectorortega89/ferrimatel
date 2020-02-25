@@ -16,16 +16,18 @@ import javax.persistence.Query;
 @Stateless
 public class VendedorDao extends Generico<Vendedor> {
 
-    public Vendedor buscarVendedorExisteDao(String nombreV, String passV) {
+       
+    
+    public List<Vendedor> obtenerListaVendedorExisteDao() {
         try {
             List<Vendedor> resultado = new ArrayList<>();
             StringBuilder sql = new StringBuilder();
-            sql.append("SELECT v FROM Vendedor v WHERE v.nombreVendedor = :nombreVendedor");
+            sql.append("SELECT v FROM Vendedor v WHERE v.flagVendedor = :flagVendedor");
             Query query;
-            query = getEntityManager().createQuery(sql.toString()).setParameter(":nombreVendedor", nombreV);
+            query = getEntityManager().createQuery(sql.toString()).setParameter("flagVendedor", true);
             resultado = query.getResultList();
             if (!resultado.isEmpty()) {    
-                    return (Vendedor) resultado;
+                    return resultado;
             } else {
                 return null;
             }
@@ -33,7 +35,7 @@ public class VendedorDao extends Generico<Vendedor> {
             return null;
         }
 
-    }
+    }      
 
     public Vendedor obtenerVendedorExisteDao(String nombreV, String passV) {
         try {

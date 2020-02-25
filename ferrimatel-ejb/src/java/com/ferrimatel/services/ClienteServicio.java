@@ -26,6 +26,8 @@ public class ClienteServicio {
         return clienteDao.editEntity(cliente);
     }
 
+    
+    //llamado por guardar cliente
     public Cliente buscarClientePorCedula(String cedula) {
         return clienteDao.buscarClientePorCedulaDao(cedula);
     }
