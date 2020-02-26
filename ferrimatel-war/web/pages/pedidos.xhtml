@@ -7,152 +7,46 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
+
     <ui:define name="contenido" >
         <div class="ui-g">
             <div class="ui-g-12" style="text-align: center">
 
-                <h1>PEDIDOS</h1>
+                <h:form>
 
-                <p:messages id="messages" showDetail="true" closable="true">
-                    <p:autoUpdate />
-                </p:messages>
-                <h:form id="frmPedido">
-                    
-
-                    <p:panel header="LISTA DE PEDIDOS" >
-                        <p:dataTable var="pedi" value="#{pedidoControlador.listaPedidosActivos}"
+                    <p:panel header="Lista de Pedidos " >
+                        <p:dataTable var="ped" value="#{pedidoControlador.listaPedidosActivosReporte}"
                                      rows="10"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowIndexVar="index">
-                            <p:column headerText="NUMERO">
-                                <h:outputText value="#{index+1}" />
+                                     emptyMessage="No existen datos para mostrar" rowIndexVar="index">
+                            <p:column headerText="...">
+                                <h:outputText value="#{index+1}"/>
+                            </p:column>                                                      
+
+                            <p:column headerText="Fecha">
+                                <h:outputText value="#{ped.fecha_pedido}" />
                             </p:column>
 
                             <p:column headerText="Nombre">
-                                <h:outputText value="#{pedi.flagPedido}" />
+                                <h:outputText value="#{ped.nombre_cl}" />
                             </p:column>
 
-                            <p:column headerText="Descripción">
-                                <h:outputText value="#{cat.descripcionCategoria}" />
+                            <p:column headerText="Apellido">
+                                <h:outputText value="#{ped.apellido_cl}" />
                             </p:column>
 
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmPedido"></p:commandButton>
+                            <p:column headerText="Detalle">
+                                <h:outputText value="#{ped.detalle_prod}" />
                             </p:column>
 
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmPedido"></p:commandButton>
-                            </p:column>
-
+                            
 
                         </p:dataTable>
                     </p:panel>
+
                 </h:form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <h:form id="frmCategoria">
-                    <p:panelGrid style="margin-top:20px">
-                        <f:facet name="header">
-                            <p:row>
-                                <p:column >NUMERO</p:column>
-                                <p:column >CANTIDAD</p:column>
-                                <p:column >DETALLE</p:column>
-                                <p:column >CLIENTE</p:column>
-                                <p:column>PRECIO TOTAL</p:column>
-                                <p:column></p:column>
-                                <p:column></p:column>
-
-                            </p:row>
-
-                        </f:facet>
-
-                        <p:row>
-                            <p:column >5</p:column>
-                            <p:column >8 </p:column>
-                            <p:column >TALADRO </p:column>
-                            <p:column >1 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >8</p:column>
-                            <p:column >1 </p:column>
-                            <p:column >PERNOS</p:column>
-                            <p:column >CLIENTE 8 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >4</p:column>
-                            <p:column >3 </p:column>
-                            <p:column >ALICATE</p:column>
-                            <p:column >CLIENTE 5 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >2</p:column>
-                            <p:column >6 </p:column>
-                            <p:column >ANGULO </p:column>
-                            <p:column >CLIENTE 2</p:column>
-                            <p:column>50,44</p:column>
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >20</p:column>
-                            <p:column >2 </p:column>
-                            <p:column >SOGA</p:column>
-                            <p:column >CLIENTE 1 </p:column>
-                            <p:column>86,44</p:column>
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-pencil" process="@this" actionListener="#{categoriaControlador.habilitarActualizacion(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-
-                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
-                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{categoriaControlador.eliminarCategoria(cat)}" update="frmCategoria"></p:commandButton>
-                            </p:column>
-                        </p:row>
-
-
-                    </p:panelGrid>
-                </h:form>
             </div>
         </div>
     </ui:define>    

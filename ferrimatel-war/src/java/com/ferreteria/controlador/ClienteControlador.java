@@ -1,7 +1,9 @@
 package com.ferreteria.controlador;
 
+import com.ferrimatel.dto.TotalVenta;
 import com.ferrimatel.modelo.Cliente;
 import com.ferrimatel.services.ClienteServicio;
+import com.ferrimatel.services.VentasServicio;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,14 +18,19 @@ public class ClienteControlador {
 
     @EJB
     private ClienteServicio clienteServicio;
+    
+    @EJB
+    private VentasServicio ventasServicio;
 
     private Cliente cliente;
     private List<Cliente> listaClientesActivos;
+    private List<TotalVenta> listaTotalVenta;
 
     @PostConstruct
     public void init() {
         cliente = new Cliente();
         listaClientesActivos = clienteServicio.obtenerListaClientesActivos();
+        setListaTotalVenta(ventasServicio.obtenerVenta());
         setCliente(new Cliente());
 
     }
@@ -97,6 +104,14 @@ public class ClienteControlador {
 
     public void setListaClientesActivos(List<Cliente> listaClientesActivos) {
         this.listaClientesActivos = listaClientesActivos;
+    }
+
+    public List<TotalVenta> getListaTotalVenta() {
+        return listaTotalVenta;
+    }
+
+    public void setListaTotalVenta(List<TotalVenta> listaTotalVenta) {
+        this.listaTotalVenta = listaTotalVenta;
     }
 
 }

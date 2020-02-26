@@ -8,43 +8,32 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="contenido" >
-        <div class="ui-g-12">
-            <div class="ui-g-12" >
-                
-                <h1 style="text-align: center ; margin-right:20px">LOGIN</h1>
-                <style type="text/css">
-                    .ui-panelgrid.showcase-text-align-center .ui-grid-responsive .ui-panelgrid-cell {text-align: center;}
-                    .customPanelGrid .ui-panelgrid-content {align-items: center;}</style>
 
 
-                <h:form id="loginForm">
-                    <p:growl id="msg" showDetail="true" life="4000" />
-                    <p:panel id="loginPnl" header="Login"
-                             style="width: 350px; margin: 0 auto;">
-                        <h:panelGrid id="loginPanel" columns="2" cellpadding="5">
-                            <h:outputText value="USUARIO" />
-                            <p:inputText id="username" value="#{logonControlador.vendedor.nombreVendedor}"></p:inputText>
-                            <p:spacer /><p:spacer />	
-                            <h:outputText value="CONTRASEÑA" />
-                            <p:password id="password" value="#{logonControlador.vendedor.passVendedor}"
-                                        feedback="false"></p:password> 
-                            <p:message for="password"></p:message>
-                           
-                        </h:panelGrid>
-                        <h:panelGrid columns="1" cellpadding="10" width="100%">
-                            <p:commandButton   id="loginButton" action="#{logonControlador.autenticar()}"
-                                             value="Login" update="loginForm" ajax="true" style="float: right;">
-                            </p:commandButton>
-                        </h:panelGrid>
-                    </p:panel>
-                    <p:blockUI block="loginPnl" trigger="loginButton" >
-                        <p:graphicImage value="resources/images/loader.gif" />
-                    </p:blockUI>
-                </h:form>
+        <h1 style="text-align: center ; margin-right:20px">LOGIN</h1>
 
-            </div>
-        </div>
+        <h:form id="loginForm">
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+            <p:panel id="loginPnl" header="Login"
+                     style="width: 350px; margin: 0 auto;">
+                <h:panelGrid id="loginPanel" columns="2" cellpadding="5">
 
+                    <h:outputText value="USUARIO" />
+                    <p:inputText id="username" value="#{logonControlador.vendedor.nombreVendedor}"></p:inputText>
+                    <h:outputText value="CONTRASEÑA" />
+                    <p:password id="password" value="#{logonControlador.vendedor.passVendedor}"
+                                feedback="false"></p:password> 
+                    <p:commandButton   id="loginButton" action="#{logonControlador.autenticar()}"
+                                       value="Login" update="loginForm" ajax="true" style="float: right;">
+                    </p:commandButton>
+                </h:panelGrid>
+            </p:panel>
+            <p:blockUI block="loginPnl" trigger="loginButton" >
+                <p:graphicImage value="resources/images/loader.gif" />
+            </p:blockUI>
+        </h:form>
 
     </ui:define>    
 </ui:composition>

@@ -7,73 +7,65 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
-    <ui:define name="contenido" >
+    <ui:define name="contenido">
         <div class="ui-g">
             <div class="ui-g-12" style="text-align: center">
 
-                <h1>INVENTARIO</h1>
-                <h:form>
-                    <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{categoriaControlador.guardarCategoria()}"  ></p:commandButton>
-                    <p:panelGrid style="margin-top:20px">
-                        <f:facet name="header">
-                            <p:row>
-                                <p:column >CÓDIGO</p:column>
-                                <p:column >CANTIDAD</p:column>
-                                <p:column >DETALLE</p:column>
-                                <p:column >PRECIO COSTO</p:column>
-                                <p:column>PRECIO VENTA</p:column>
-                                <p:column>PRECIO MAYOR</p:column>
+                <h1 style="float: left contour">INVENTARIO</h1>
+                <h:form id="frmProducto"  >
+                    <center> <img src="../recursos/images/her4.jpg" alt=""/> </center>
+                    <p:panel  header="Registro de Inventario" >
+                        <p:panelGrid id="pgCategoria" columns="2" layout="grid">
+                            <p:outputLabel value="Codigo"><span class="rojo">*</span></p:outputLabel>
+                            <p:inputText value="#{productoControlador.producto.codigoProd}" required="true" requiredMessage="Campo requerido"></p:inputText>
+                            <p:outputLabel value="Producto"></p:outputLabel>
+                            <p:inputText value="#{productoControlador.producto.detalleProd}" ></p:inputText>
+                            <p:outputLabel value="Cantidad"></p:outputLabel>
+                            <p:inputText value="#{productoControlador.producto.cantidadProd}" ></p:inputText>
+                            <p:outputLabel value="Precio de venta"></p:outputLabel>
+                            <p:inputText value="#{productoControlador.producto.precioProd}" ></p:inputText>
+                        </p:panelGrid>
 
-                            </p:row>
+                        <center>
+                            <p:commandButton value="Guardar" icon="ui-icon-disk" actionListener="#{productoControlador.guardarProducto()}"
+                                             process="frmProducto" update="frmProducto:dtProducto" ></p:commandButton>
 
-                        </f:facet>
+                        </center>
 
-                        <p:row>
-                            <p:column ><p:inputText></p:inputText></p:column>
-                            <p:column ><p:inputText></p:inputText> </p:column>
-                            <p:column ><p:inputText></p:inputText> </p:column>
-                            <p:column ><p:inputText></p:inputText> </p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
-                            <p:column><p:inputText></p:inputText></p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >8</p:column>
-                            <p:column >MARTILLO </p:column>
-                            <p:column >STANLEY </p:column>
-                            <p:column >15,40 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column>50,44</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >4</p:column>
-                            <p:column >MARTILLO </p:column>
-                            <p:column >STANLEY </p:column>
-                            <p:column >15,40 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column>50,44</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >2</p:column>
-                            <p:column >MARTILLO </p:column>
-                            <p:column >STANLEY </p:column>
-                            <p:column >15,40 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column>50,44</p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column >20</p:column>
-                            <p:column >MARTILLO </p:column>
-                            <p:column >STANLEY </p:column>
-                            <p:column >15,40 </p:column>
-                            <p:column>50,44</p:column>
-                            <p:column>50,44</p:column>
-                        </p:row>
+                    </p:panel>
+
+                    <p:panel header="Lista del Inventario" >
+                        <p:dataTable id="dtProducto" var="pro" value="#{productoControlador.listaProductosActivos}" >
 
 
-                    </p:panelGrid>
+                            <p:column headerText="Codigo">
+                                <h:outputText value="#{pro.codigoProd}" />
+                            </p:column>
+
+                            <p:column headerText="Producto">
+                                <h:outputText value="#{pro.detalleProd}" />
+                            </p:column>
+
+                            <p:column headerText="Cantidad">
+                                <h:outputText value="#{pro.cantidadProd}" />
+                            </p:column>
+
+                            <p:column headerText="Precio">
+                                <h:outputText value="#{pro.precioProd}" />
+                            </p:column>
+
+
+                            <p:column headerText="..." styleClass="centrar" style="width: 60px">
+                                <p:commandButton icon="ui-icon-close" process="@this" actionListener="#{productoControlador.eliminarProducto(pro)}" update="frmProducto"></p:commandButton>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </p:panel>
 
                 </h:form>
-            </div>
+
+            </div>           
         </div>
     </ui:define>    
 </ui:composition>

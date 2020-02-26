@@ -22,9 +22,6 @@ public class LogonControlador extends Utilitarios {
     private List<Vendedor> listaVendedor;
     private List<VendedorServicio> listaVendedorServicio;
 
-    private String usu;
-    private boolean resultadoVendedor;
-
     @PostConstruct
     public void init() {
         setVendedor(new Vendedor());
@@ -37,24 +34,17 @@ public class LogonControlador extends Utilitarios {
             if (vendedor.getNombreVendedor() != null) {
                 List<Vendedor> vendedorExiste = listaVendedor;
                 for (Vendedor datos : vendedorExiste) {
-                    if (datos.getNombreVendedor().equals(vendedor.getNombreVendedor())) {
-                        if (datos.getPassVendedor().equals(vendedor.getPassVendedor())) {
-                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "ACCESO CORRECTO"));
-                            redirect("/pages/ventas.jsf");
-                            break;
-                        } else {
-                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "CONTRASEÑA INCORRECTA"));
-                        }
-                    } else {
-                        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "USUARIO INCORRECTO"));
+                    if (datos.getNombreVendedor().equals(vendedor.getNombreVendedor()) && datos.getPassVendedor().equals(vendedor.getPassVendedor())) {
+                        redirect("/pages/ventas.jsf");
                     }
                 }
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "INGRESE LOS DATOS DE LOGIN"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "INGRESE EL USUARIO Y CONTRASEÑA CORRECTA"));
             }
+
         } catch (Exception e) {
-            e.getMessage();
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "INGRESE LOS DATOS DE LOGIN"));
         }
+
     }
 
     public VendedorServicio getVendedorServicio() {
@@ -87,14 +77,6 @@ public class LogonControlador extends Utilitarios {
 
     public void setVendedor(Vendedor vendedor) {
         this.vendedor = vendedor;
-    }
-
-    public String getUsu() {
-        return usu;
-    }
-
-    public void setUsu(String usu) {
-        this.usu = usu;
     }
 
 }

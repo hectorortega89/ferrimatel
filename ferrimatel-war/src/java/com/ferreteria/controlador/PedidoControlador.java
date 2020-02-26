@@ -5,13 +5,20 @@
  */
 package com.ferreteria.controlador;
 
+import com.ferrimatel.dto.Reporte;
+import com.ferrimatel.modelo.Cliente;
 import com.ferrimatel.modelo.Pedido;
+import com.ferrimatel.modelo.Producto;
+import com.ferrimatel.services.ClienteServicio;
 import com.ferrimatel.services.PedidoServicio;
+import com.ferrimatel.services.ProductoServicio;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
@@ -19,22 +26,38 @@ public class PedidoControlador {
 
     @EJB
     private PedidoServicio pedidoServicio;
+    
+    @EJB
+    private ClienteServicio clienteServicio;
 
+    @EJB
+    private ProductoServicio productoServicio;
+
+    private List<Producto> listaPedidosActivos;
+    private List<Cliente> listaClientes;
+    private List<Reporte> listaPedidosActivosReporte;
     private Pedido pedido;
-    private List<Pedido> listaPedidosActivos;
-    private Boolean botonActualizarVisible; 
+    private Integer idCliente;
+    private Integer idProducto;
 
     @PostConstruct
     public void init() {
-
         pedido = new Pedido();
-        listaPedidosActivos = pedidoServicio.obtenerPedidosActivos();
-        setBotonActualizarVisible((Boolean) false);
+        setListaPedidosActivosReporte(pedidoServicio.obtenerReportePedidosLista());
     }
+    
+    public void eliminarProductos(Pedido ped) {
+        if (ped != null) {
+            ped.setFlagPedido(false);
+            Boolean pedidoExiste = pedidoServicio.guardarPedidos(ped);
+            if (pedidoExiste) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El registro ha sido eliminado exitosamente."));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El registro no ha sido eliminado."));
+            }
+            init();
+        }
 
-    public void habilitarActualizacion(Pedido pedi) {
-        pedido = pedi;
-        setBotonActualizarVisible((Boolean) true);
     }
 
     public PedidoServicio getPedidoServicio() {
@@ -45,6 +68,46 @@ public class PedidoControlador {
         this.pedidoServicio = pedidoServicio;
     }
 
+    public ClienteServicio getClienteServicio() {
+        return clienteServicio;
+    }
+
+    public void setClienteServicio(ClienteServicio clienteServicio) {
+        this.clienteServicio = clienteServicio;
+    }
+
+    public ProductoServicio getProductoServicio() {
+        return productoServicio;
+    }
+
+    public void setProductoServicio(ProductoServicio productoServicio) {
+        this.productoServicio = productoServicio;
+    }
+
+    public List<Producto> getListaPedidosActivos() {
+        return listaPedidosActivos;
+    }
+
+    public void setListaPedidosActivos(List<Producto> listaPedidosActivos) {
+        this.listaPedidosActivos = listaPedidosActivos;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public List<Reporte> getListaPedidosActivosReporte() {
+        return listaPedidosActivosReporte;
+    }
+
+    public void setListaPedidosActivosReporte(List<Reporte> listaPedidosActivosReporte) {
+        this.listaPedidosActivosReporte = listaPedidosActivosReporte;
+    }
+
     public Pedido getPedido() {
         return pedido;
     }
@@ -53,20 +116,22 @@ public class PedidoControlador {
         this.pedido = pedido;
     }
 
-    public List<Pedido> getListaPedidosActivos() {
-        return listaPedidosActivos;
+    public Integer getIdCliente() {
+        return idCliente;
     }
 
-    public void setListaPedidosActivos(List<Pedido> listaPedidosActivos) {
-        this.listaPedidosActivos = listaPedidosActivos;
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
-    public Boolean getBotonActualizarVisible() {
-        return botonActualizarVisible;
+    public Integer getIdProducto() {
+        return idProducto;
     }
 
-    public void setBotonActualizarVisible(Boolean botonActualizarVisible) {
-        this.botonActualizarVisible = botonActualizarVisible;
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
     }
+
+    
 
 }

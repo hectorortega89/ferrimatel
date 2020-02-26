@@ -5,12 +5,36 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.model.SelectItem;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 @Stateless
 public class ProductoDao extends Generico<Producto> {
 
-    
+    @PersistenceContext(unitName = "ferrimatel-ejbPU")
+    private EntityManager EntityManager;
+
+    public boolean buscarProductoPorCodigoDao(String codigoProducto) {
+        try {
+            List<Producto> listaProducto = new ArrayList<>();
+            StringBuilder sql = new StringBuilder();
+            sql.append("SELECT codigo_prod FROM Producto p WHERE p.codigoProd = :codigoProd");
+            Query nuevaQuery;
+            nuevaQuery = getEntityManager().createQuery(sql.toString()).setParameter("codigoProd", codigoProducto);
+            listaProducto = nuevaQuery.getResultList();
+            if (listaProducto != null && !listaProducto.isEmpty()) {  //valio que la lista tenga elementos
+                return true;
+
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
+
+    }
+
     public Producto buscarProductoPorDetalleDao(String detalle) {
         try {
             List<Producto> resultado = new ArrayList<>();
@@ -28,7 +52,7 @@ public class ProductoDao extends Generico<Producto> {
             return null;
         }
     }
-    
+
     /*
     public List<Producto> obtenerProductoPorDetalleDao(Producto detalle){
         try {
@@ -47,8 +71,8 @@ public class ProductoDao extends Generico<Producto> {
             return null;
         }
     }
-       */     
-    /*
+     */
+ /*
     public boolean buscarProductoPorDetalleDao(String detalleProducto) {
 
         try {
@@ -68,7 +92,6 @@ public class ProductoDao extends Generico<Producto> {
             return false;
         }
     }*/
-
     public List<Producto> obtenerProductosActivosDao() {
         try {
             List<Producto> resultado = new ArrayList<>();
@@ -87,7 +110,6 @@ public class ProductoDao extends Generico<Producto> {
         }
     }
 
-    
     //RECIBE UN PARAMETRO DE TIPO PRODUCTO
     //OBTENGO UNA LISTA DE PRODUCTOS ACTIVOS CONSULTANDO EL ID Y LA BANDERA EN ESTADO TRUE
     //SI EXISTE EL IDPROD Y EL ESTADO ES TRUE, REGRESA UN RESULTADO

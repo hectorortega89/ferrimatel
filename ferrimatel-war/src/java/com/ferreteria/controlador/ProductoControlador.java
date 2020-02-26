@@ -20,21 +20,61 @@ public class ProductoControlador {
 
     private List<Producto> listaProductosActivos;
     private Producto producto;
+    private Boolean botonActualizarVisible;
 
     @PostConstruct
     public void init() {
         setProducto(new Producto());
-        //setIdCategoria(null);
-        getProducto().setPrecioProd(new Double("0.00"));
-        //getProducto().setPrecioProd(new Double("0.00"));
         setListaProductosActivos(productoServicio.obtenerProductosActivos());
+        setBotonActualizarVisible((Boolean) false);
 
     }
 
-    
     //ERROR, SOLO ALGUNOS PRODUCTOS ME RETORNAN, EL RESTO NO EXISTEN
-    
-    public void buscarProductoPorDetalle(){
+    public void guardarProducto() {
+        boolean productoExiste = productoServicio.buscarProductoPorCodigo(producto.getCodigoProd());
+        if (productoExiste) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El producto ingresado ya existe."));
+        } else {
+            this.producto.setFlagProd(Boolean.TRUE);
+            productoServicio.guardarProductoServicio(producto);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Exito", "El producto ha sido guardado existosamente."));
+            init();
+        }
+    }
+
+    //metodo actualizar (boton oculto)
+    public void actualizarProducto() {
+
+        setBotonActualizarVisible((Boolean) false);
+        if (producto != null) {
+            Boolean categoriaExiste = productoServicio.guardarProducto(producto);
+            if (categoriaExiste) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El registro ha sido actualizado exitosamente."));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El registro no ha sido actualizado."));
+            }
+            init();
+        }
+
+    }
+
+    //metodo eliminar x
+    public void eliminarProducto(Producto pro) {
+        if (pro != null) {
+            pro.setFlagProd(false);
+            Boolean categoriaExiste = productoServicio.guardarProducto(pro);
+            if (categoriaExiste) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El registro ha sido eliminado exitosamente."));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "El registro no ha sido eliminado."));
+            }
+            init();
+        }
+
+    }
+
+    public void buscarProductoPorDetalle() {
         try {
             if (producto.getDetalleProd() != null) {
                 Producto productoExiste = productoServicio.buscarProductoPorDetalle(producto.getDetalleProd());
@@ -45,7 +85,7 @@ public class ProductoControlador {
                 } else {
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "El producto no existe, por favor registrelo."));
                 }
-                
+
                 //setCamposHabilitados(true);
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Por favor verifique los productos."));
@@ -56,9 +96,6 @@ public class ProductoControlador {
         }
 
     }
-        
-    
- 
 
     public ProductoServicio getProductoServicio() {
         return productoServicio;
@@ -82,6 +119,14 @@ public class ProductoControlador {
 
     public void setListaProductosActivos(List<Producto> listaProductosActivos) {
         this.listaProductosActivos = listaProductosActivos;
+    }
+
+    public Boolean getBotonActualizarVisible() {
+        return botonActualizarVisible;
+    }
+
+    public void setBotonActualizarVisible(Boolean botonActualizarVisible) {
+        this.botonActualizarVisible = botonActualizarVisible;
     }
 
 }
